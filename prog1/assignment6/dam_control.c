@@ -11,7 +11,18 @@ typedef enum dam_mode_e DamMode;
 
 DamMode dam_control(double water_level) {
     // TODO
-    return DM_IDLE;
+	if (water_level > 67.5){
+		return DM_PUMP_EMERGENCY;
+	}
+	if (water_level >= 40.){
+		return DM_PUMP_TWO;
+	}
+	if (water_level >= 20.){
+		return DM_PUMP_ONE;
+	}
+	if (water_level < 20.){
+		return DM_IDLE;
+	}
 }
 
 void dam_control_test(void) {
